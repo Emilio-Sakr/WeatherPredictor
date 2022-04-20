@@ -1,16 +1,14 @@
 from fastapi import FastAPI
-import json
+from WeatherPredictorApi.routers import cities
 
 
 
 def createApp():
     app = FastAPI()
 
-    cities = open('./WeatherPredictorApi/data.json')
-    citiesData = json.load(cities)
-
-    @app.get('/cities')
-    def getCities():
-        return citiesData
+    app.include_router(
+        cities.Cities,
+        prefix='/cities'
+    )
 
     return app
