@@ -1,5 +1,1 @@
-{
-    "Cities": [
-        "Beirut", "Moscow", "London", "Paris", "Berlin", "Beijing", "Washington, D.C.", "Warsaw"
-    ]
-}
+{"Cities": ["Berlin", "Paris", "London", "Madrid", "Vienna", "Brussels", "Moscow", "Sofia", "Copenhagen", "Athens", "Budapest", "Reykjavik", "Dublin", "Rome", "Amsterdam", "Oslo", "Warsaw", "Lisabon", "Bern", "Kiev", "Stockholm", "Washington", "New York", "Sacramento", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia", "Vancouver", "Ottawa", "Buenos Aires", "Brasilia", "Santiago", "Bogota", "Ciudad de Mexico", "Asuncion", "Lima", "Montevideo", "Kabul", "Dhaka", "Peking", "Tiflis", "New Delhi", "Jakarta", "Teheran", "Baghdad", "Jerusalem", "Tokyo", "Kuala Lumpur", "Ulan Bator", "Kathmandu", "Singapore", "Seoul", "Ankara", "Abu Dhabi", "Algiers", "Luanda", "Cairo", "Nairobi", "Tripoli", "Windhoek", "Pretoria", "Canberra", "Wellington"]}
