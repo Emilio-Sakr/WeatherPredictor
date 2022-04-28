@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from WeatherPredictorApi.routers import cities
 
 
-
 def createApp():
     app = FastAPI()
 
