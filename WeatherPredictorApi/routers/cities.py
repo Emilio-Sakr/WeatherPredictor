@@ -1,8 +1,9 @@
 from typing import Dict
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 import json
-from pydantic import Json
 import requests
+from WeatherPredictorApi.auth.authbearer import JWTBearer
+from WeatherPredictorApi.auth.authhandler import signJWT
 
 Cities = APIRouter()
 
@@ -40,10 +41,10 @@ async def getWeather(city: str) -> Dict:
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={allCitiesJson[city][0]}&longitude={allCitiesJson[city][1]}&current_weather=true').json()
         return {'temperature':response['current_weather']['temperature'],'unit':'celsius'}
 
-@Cities.get('/weather/{day}/{city}')
+@Cities.get('/weather/{day}/{city}', dependencies=[Depends(JWTBearer())])
 async def getWeather(day: int, city: str) -> Dict[str,int]:
     if day < -2 or day > 6:
-        raise HTTPException(status_code=404, detail='specified past day should be between -2 and 6')
+        raise HTTPException(status_code=404, detail='specified day should be between -2 and 6')
     allCitiesJson = findCitiesJson()
     if city not in allCitiesJson:
         raise HTTPException(status_code=404, detail="City not available")
