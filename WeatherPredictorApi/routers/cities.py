@@ -41,7 +41,7 @@ async def getWeather(city: str) -> Dict:
         response = requests.get(f'https://api.open-meteo.com/v1/forecast?latitude={allCitiesJson[city][0]}&longitude={allCitiesJson[city][1]}&current_weather=true').json()
         return {'temperature':response['current_weather']['temperature'],'unit':'celsius'}
 
-@Cities.get('/weather/{day}/{city}', dependencies=[Depends(JWTBearer())])
+@Cities.get('/weather/{day}/{city}', dependencies = [Depends(JWTBearer())])
 async def getWeather(day: int, city: str) -> Dict[str,int]:
     if day < -2 or day > 6:
         raise HTTPException(status_code=404, detail='specified day should be between -2 and 6')
@@ -56,5 +56,3 @@ async def getWeather(day: int, city: str) -> Dict[str,int]:
         'max_temperature':int(daily['temperature_2m_max'][day]), 'min_temperature': int(daily['temperature_2m_min'][day]),
         'average_temperature':(int(daily['temperature_2m_max'][day])-int(daily['temperature_2m_min'][day]))/2,
         }
-
-    
