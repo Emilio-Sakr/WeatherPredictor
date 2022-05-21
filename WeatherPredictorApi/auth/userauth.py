@@ -3,6 +3,7 @@ from fastapi import APIRouter, HTTPException, Body
 from WeatherPredictorApi.auth.models import UserLoginSchema
 from .authhandler import signJWT, decodeJWT
 from .models import UserSchema
+from WeatherPredictorApi.SQLApp.crud import getUserByEmail
 
 Auth = APIRouter()
 

@@ -3,7 +3,8 @@ from fastapi import APIRouter, HTTPException, Depends
 import json
 import requests
 from WeatherPredictorApi.auth.authbearer import JWTBearer
-from WeatherPredictorApi.auth.authhandler import signJWT
+from WeatherPredictorApi.SQLApp.crud import getCity, getAllCities
+
 
 Cities = APIRouter()
 
