@@ -20,3 +20,6 @@ class cityCreate(BaseModel):
     name: str = Field(...)
     latitude: float = Field(...)
     longitude: float = Field(...)
+
+    class config:
+        orm_mode = True

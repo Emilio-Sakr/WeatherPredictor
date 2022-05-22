@@ -1,11 +1,19 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import psycopg2
 
-DATABASE_URI = "postgresql://postgres:instanceofHonor@localhost:5432/WeatherAppDB"
+Base = declarative_base()
+
+DATABASE_URI = "postgresql+psycopg2://postgres:instanceofHonor@localhost:5432/WeatherAppDB"
 
 engine = create_engine(DATABASE_URI)
 
-SessionLocal = sessionmaker(bind=engine)
+SessionLocal = sessionmaker(engine, autocommit=True, autoflush=True)
 
-Base = declarative_base()
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
