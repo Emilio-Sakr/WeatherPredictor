@@ -12,9 +12,7 @@ def createAll(db: Session):
         with open(f'{base_path}/cities.json') as f:
             data = json.load(f)
             for i, j in data.items():
-                print(i)
-                print(j)
                 city = cityCreate(name = i, latitude = j[0], longitude = j[1])
                 createCity(db, city)
     except Exception as e:
-        print(e)
+        print(f'error {e}')
