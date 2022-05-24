@@ -9,7 +9,7 @@ DATABASE_URI = "postgresql+psycopg2://postgres:instanceofHonor@localhost:5432/We
 
 engine = create_engine(DATABASE_URI)
 
-SessionLocal = sessionmaker(engine, autocommit=True, autoflush=True)
+SessionLocal = sessionmaker(engine, autocommit=False, autoflush=True)
 
 def get_db():
     db = SessionLocal()
