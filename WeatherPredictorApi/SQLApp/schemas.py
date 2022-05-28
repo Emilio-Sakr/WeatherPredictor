@@ -16,7 +16,7 @@ class User(UserBase):
 
 
 #City
-class cityCreate(BaseModel):
+class CityCreate(BaseModel):
     name: str = Field(...)
     latitude: float = Field(...)
     longitude: float = Field(...)

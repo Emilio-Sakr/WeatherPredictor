@@ -10,9 +10,6 @@ from WeatherPredictorApi.SQLApp.crud import dehashpassword, createUser, getAllUs
 
 Auth = APIRouter()
 
-data_path = './WeatherPredictorApi/data'
-
-
 def checkIfUserIsPresent(data: UserCreate, db : Session = Depends(get_db)):
     for user in getAllUsers(db):
         if user.email == data.email:

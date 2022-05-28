@@ -66,7 +66,7 @@ def deleteAllCities(db: Session):
     else:
         return 'empty'
 
-def createCity(db: Session, city: cityCreate):
+def createCity(db: Session, city: CityCreate):
     dbCity = models.city(name= city.name, latitude=city.latitude, longitude= city.longitude)
     db.add(dbCity)
     db.commit()

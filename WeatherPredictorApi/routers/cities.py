@@ -5,8 +5,9 @@ import requests
 from WeatherPredictorApi.SQLApp.crud import getCity, getAllCities
 from sqlalchemy.orm import Session
 from WeatherPredictorApi.SQLApp.database import get_db
+from WeatherPredictorApi.auth.authbearer import JWTBearer
 
-Cities = APIRouter()
+Cities = APIRouter(dependencies=[Depends(JWTBearer())])
 
 @Cities.get('/items')
 async def getCities(db: Session = Depends(get_db)):

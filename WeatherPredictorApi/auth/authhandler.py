@@ -12,9 +12,9 @@ def tokenResponse(token: str):
         'access_token': token
     }
 
-def signJWT(user_id: str) -> Dict[str, str]:
+def signJWT(email: str) -> Dict[str, str]:
     payload = {
-        "user_id": user_id,
+        "email": email,
         "expires": time.time() + 600
     }
     token = jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)

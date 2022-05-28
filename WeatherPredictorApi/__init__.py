@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
+from WeatherPredictorApi.auth.authbearer import JWTBearer
 from WeatherPredictorApi.routers import cities
 from WeatherPredictorApi.routers.internal import internalcities
 from WeatherPredictorApi.auth import userauth
@@ -9,6 +10,10 @@ Base.metadata.create_all(bind=engine)
 
 def createApp():
     app = FastAPI()
+
+    @app.get('/')
+    def welcome():
+        return {'Api':'WeatherPredictorApi', 'docs':'path:<domain>/docs'}
 
     app.include_router(
         cities.Cities,
